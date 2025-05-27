@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DisCard.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #1769ff;
+      --hover-blue: #0047b3;
+      --background: #fbfbfd;
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+    }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--background);
+      min-height: 100vh;
+      margin: 0;
+      box-sizing: border-box;
+      position: relative;
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .nav {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 32px 48px 0 0;
+      box-sizing: border-box;
+      font-size: 15px;
+      font-weight: 600;
+      gap: 32px;
+      position: fixed;
+      top: 0;
+      background: rgba(251, 251, 253, 0.8);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+    }
+    
+    .nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      margin-left: 24px;
+      transition: color 0.3s ease;
+    }
+    
+    .nav a:hover {
+      color: var(--primary-blue);
+    }
+    
+    .hero {
+      padding-top: 120px;
+      margin-bottom: 80px;
+    }
+    
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    
+    .logo-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(74,144,254,0.15);
+    }
+    
+    .title {
+      font-size: 64px;
+      font-weight: 700;
+      text-align: center;
+      margin: 0;
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, var(--text-primary) 0%, #666 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .subtitle {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      margin-top: 16px;
+      margin-bottom: 24px;
+      color: var(--text-secondary);
+    }
+    
+    .system-req {
+      text-align: center;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 48px;
+    }
+    
+    .download-btn {
+      display: block;
+      margin: 0 auto 48px auto;
+      background: var(--primary-blue);
+      color: #fff;
+      font-weight: 600;
+      font-size: 17px;
+      border: none;
+      border-radius: 999px;
+      padding: 16px 32px;
+      cursor: pointer;
+      box-shadow: 0 6px 32px rgba(23,105,255,0.18);
+      transition: all 0.3s ease;
+      max-width: 180px;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+    }
+    
+    .download-btn:hover {
+      background: var(--hover-blue);
+      box-shadow: 0 8px 40px rgba(23,105,255,0.28);
+      transform: translateY(-2px);
+    }
+    
+    .section {
+      padding: 120px 0;
+      text-align: center;
+      background: #fff;
+    }
+    
+    .section:nth-child(even) {
+      background: var(--background);
+    }
+    
+    .section-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+    
+    .section-subtitle {
+      font-size: 24px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 48px auto;
+      line-height: 1.5;
+      padding: 0 20px;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .feature {
+      text-align: left;
+      padding: 32px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    
+    .feature:hover {
+      transform: translateY(-4px);
+    }
+    
+    .feature h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+    
+    .feature p {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .gallery-item {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .gallery-item.large {
+      grid-column: 1 / -1;
+    }
+    
+    .animations-section {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    
+    .gallery-gif {
+      max-width: 380px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    
+    .gallery-gif img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    @media (max-width: 1024px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .title {
+        font-size: 40px;
+      }
+      
+      .subtitle {
+        font-size: 20px;
+      }
+      
+      .section-title {
+        font-size: 32px;
+      }
+      
+      .section-subtitle {
+        font-size: 18px;
+      }
+      
+      .feature {
+        padding: 24px;
+      }
+      
+      .feature h3 {
+        font-size: 20px;
+      }
+      
+      .feature p {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="downloads.html">Downloads</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+  
+  <section id="home" class="hero">
+    <div class="logo">
+      <img src="appicon.png" alt="App Icon" class="logo-img">
+      <h1 class="title">DisCard.</h1>
+    </div>
+    <div class="subtitle">...it's that simple</div>
+    <a class="download-btn" href="downloads.html">Get now</a>
+    <div class="system-req">*requires macOS 14.6/iOS 17.6 or later</div>
+  </section>
+
+  <section id="about" class="section">
+    <h2 class="section-title">Simplicity meets power</h2>
+    <p class="section-subtitle">A new way to organize your thoughts, tasks, and data with an interface that stays out of your way.</p>
+    
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Smart Note Types</h3>
+        <p>Choose from three powerful note types: Notes for text and images, Tasks for checkable items, and Data for simple spreadsheets. Each type is designed for its specific purpose while maintaining a consistent, intuitive interface.</p>
+      </div>
+      <div class="feature">
+        <h3>Spaces</h3>
+        <p>Organize your notes in dedicated spaces - like rooms for different aspects of your life. Keep work separate from personal notes, and secure sensitive information with TouchID protection.</p>
+      </div>
+      <div class="feature">
+        <h3>Beautiful Interface</h3>
+        <p>A bare bones UI that doesn't compromise on functionality. Everything you need is right where you expect it to be, with no unnecessary complexity.</p>
+      </div>
+      <div class="feature">
+        <h3>Native Performance</h3>
+        <p>Built specifically for macOS and iOS, DisCard takes full advantage of system features while maintaining lightning-fast performance and reliability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="section">
+    <h2 class="section-title">Gallery</h2>
+    <p class="section-subtitle">See DisCard in action</p>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="gallery1.png" alt="New Note Modal">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery2.png" alt="Settings Modal">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery3.png" alt="New Space Modal">
+      </div>
+      <div class="gallery-item large">
+        <img src="gallery4.png" alt="Main App Window">
+      </div>
+    </div>
+  </section>
+
+  <section class="animations-section">
+    <h2 class="section-title">Smooth Animations</h2>
+    <p class="section-subtitle">Every interaction is crafted with care</p>
+    <div class="gallery-gif">
+      <img src="animation.gif" alt="App animation demo">
+    </div>
+  </section>
+</body>
+</html>
